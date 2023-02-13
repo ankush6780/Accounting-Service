@@ -21,10 +21,8 @@ public class ConsumerCnf {
     @Bean
     public ConsumerFactory<String, EmployeeEntity> EmployeeEntityConsumer() {
 
-        // Creating a Map of string-object pairs
         Map<String, Object> config = new HashMap<>();
 
-        // Adding the Configuration
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id");
         config.put(
@@ -39,7 +37,6 @@ public class ConsumerCnf {
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), new JsonDeserializer<>(EmployeeEntity.class));
     }
 
-    // Creating a Listener
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, EmployeeEntity> EmployeeEntityListener() {
         ConcurrentKafkaListenerContainerFactory<String, EmployeeEntity> factory
@@ -51,10 +48,8 @@ public class ConsumerCnf {
     @Bean
     public ConsumerFactory<String, Leave> EmployeeLeaveEntityConsumer() {
 
-        // Creating a Map of string-object pairs
         Map<String, Object> config = new HashMap<>();
 
-        // Adding the Configuration
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 "127.0.0.1:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG,
@@ -71,7 +66,6 @@ public class ConsumerCnf {
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), new JsonDeserializer<>(Leave.class));
     }
 
-    // Creating a Listener
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, Leave> EmployeeLeaveEntityListener() {
         ConcurrentKafkaListenerContainerFactory<String, Leave> factory
